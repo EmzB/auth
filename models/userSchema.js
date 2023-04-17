@@ -15,7 +15,7 @@ const mySchema = new userSchema({
 })
 
 // static method that runs whenever a user tries to sign up
-mySchema.statics.signup = async(email, password)=> {
+mySchema.statics.signup = async function (email, password){
  const userExists = await this.findOne({email})
 
 if (userExists){

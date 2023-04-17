@@ -2,8 +2,8 @@ const User = require('../models/userSchema');
 
 
 //signup
-const signup = async (req, res)=>{
-const {email, passsword}= req.body;
+const signup = async(req, res)=>{
+const {email, password}= req.body;
 
 try{
  const user = await User.signup(email, password);
