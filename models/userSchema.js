@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const userSchema = mongoose.Schema;
 const bcrypt = require('bcrypt');
+const validator = require('validator');
 
 const mySchema = new userSchema({
     email:{
@@ -16,7 +17,18 @@ const mySchema = new userSchema({
 
 // static method that runs whenever a user tries to sign up
 mySchema.statics.signup = async function (email, password){
- const userExists = await this.findOne({email})
+    if (!email || !password){
+       throw Error ('Please fill out your details');
+    }
+    if (!validator.isEmail(email)){
+        throw Error ('Not a valid address');
+     }
+     if (!validator.isStrongPassword(password)){
+        throw Error ('weak password try again');
+     }
+ 
+ 
+    const userExists = await this.findOne({email})
 
 if (userExists){
   throw Error ('A user with the same email exists')
