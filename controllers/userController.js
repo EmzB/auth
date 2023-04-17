@@ -7,7 +7,7 @@ const {email, passsword}= req.body;
 
 try{
  const user = await User.signup(email, password);
- res.status(200).json(`{email, password} successfuly signed up`);
+ res.status(200).json(`${email} successfuly signed up`);
 }
 
 catch (error){
