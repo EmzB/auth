@@ -26,9 +26,9 @@ mySchema.statics.signup = async function (email, password){
      if (!validator.isStrongPassword(password)){
         throw Error ('weak password try again');
      }
+
  
- 
-    const userExists = await this.findOne({email})
+ const userExists = await this.findOne({email})
 
 if (userExists){
   throw Error ('A user with the same email exists')
