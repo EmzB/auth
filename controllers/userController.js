@@ -1,8 +1,8 @@
 const User = require('../models/userSchema');
 const jwt = require('jsonwebtoken');
 
-const userToken= (_id) =>{
-return jwt.sign({_id}, process.env.SECRET, {expiresIn:'3d'} );
+const userToken= (_id) => {
+return jwt.sign({_id}, process.env.SECRET, {expiresIn:'3d'});
 }
 
 //signup
@@ -11,7 +11,7 @@ const {email, password}= req.body;
 
 try{
  const user = await User.signup(email, password);
- const token = userToken(user._id)
+ const token = userToken(user._id);
 
  res.status(200).json(`${email} ${token} successfuly signed up`);
  console.log(token);
@@ -22,10 +22,19 @@ catch (error){
 }}
 
 //login
-const login = async (req, res) =>  
-{
-res.json("hi you're logged in");
-}
+const login = async (req, res) =>  {
+
+const {email, password} = req.body;
+try{
+    const user = await User.login(email, password);
+    const token = userToken(user._id);
+   
+    res.status(200).json(`${email} ${token} successfuly loggged in`);
+   }
+   
+   catch (error){
+    res.status(400).json(error.message); 
+   }}
 // dashboard
 const home = async(req, res)=>{
     res.json("finally");

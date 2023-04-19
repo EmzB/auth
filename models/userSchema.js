@@ -42,5 +42,21 @@ const user = await this.create({email, password:hash});
 return user; // static method returns this new document
 
 }
+//login method
+mySchema.statics.login = async function (email, password){
 
+if (!email || !password){
+     throw Error ('Please fill out your details');
+    }
+const user = await this.findOne({email});
+
+ if (!user){
+    throw Error ('This email does not exist');
+ }
+ const validUser = await bcrypt.compare(password, user.password);
+ if (!validUser){
+    throw Error ('wrong password try again')
+ }
+ return user;
+}
 module.exports= mongoose.model('User', mySchema)
