@@ -1,6 +1,6 @@
-import {useSate} from 'react';
+import {useState} from 'react';
 
-const loginForm= () => {
+const LoginForm= () => {
   const [email,  setEmail] = useState('');
   const [password, setPassword] = useState('');
   
@@ -25,4 +25,4 @@ return (
     </form>
 )}
 
-export default loginForm;
+export default LoginForm;

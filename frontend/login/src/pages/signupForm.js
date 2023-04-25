@@ -1,10 +1,9 @@
-import {useSate} from 'react';
+import {useState} from 'react';
 
-const loginForm= () => {
+const SignupForm= () => {
   const [email,  setEmail] = useState('');
   const [password, setPassword] = useState('');
   
-
 return (
     <form>
     <label>Email:</label>
@@ -25,4 +24,4 @@ return (
     </form>
 )}
 
-export default signupForm;
+export default SignupForm;
