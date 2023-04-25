@@ -1,8 +1,8 @@
 import {useContext} from 'react';
-import { authContext } from "../context/authContext";
+import { AuthContext } from "./context/AuthContext";
 
-export const useauthContext = () => {
-    const context = useContext(authContext);
+export const useAuthContext = () => {
+    const context = useContext(AuthContext);
     
   if (!context){
     throw Error('cannot accces context outside the provider')
