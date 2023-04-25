@@ -21,8 +21,8 @@ return (
     value = {password}
     />
 
-<button>Log In</button>
+<button>Sign Up</button>
     </form>
 )}
 
-export default loginForm;
+export default signupForm;
