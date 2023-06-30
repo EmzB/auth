@@ -1,17 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const cors = require('cors');
-
 require('dotenv').config();
 const userRoutes= require('./routes/user');
 
 console.log('MONGO_URI:', process.env.MONGO_URI);
 console.log('PORT:', process.env.PORT);
 
-app.use(express.json())
-app.use(cors());
- // handle the req.body
+app.use(express.json()) // handle the req.body
 
 app.use('/api/user', userRoutes);
 
