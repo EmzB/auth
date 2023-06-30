@@ -29,12 +29,11 @@ try{
     const user = await User.login(email, password);
     const token = userToken(user._id);
    
-    res.status(200).json(`${email} ${token} successfuly loggged in`);
-   }
-   
-   catch (error){
-    res.status(400).json(error.message); 
-   }}
+    res.json({ status: 200, message: `${email} ${token} successfully logged in` });
+        }  
+    catch (error) {
+   res.json({ status: 400, message: error.message });
+        }}
 // dashboard
 const home = async(req, res)=>{
     res.json("finally");
